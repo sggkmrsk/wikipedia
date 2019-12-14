@@ -1,0 +1,48 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Wikipedia
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    .side_bar
+      %h1.side_bar__title
+        Simple wiki
+      %input.side_bar__search_box{name: "search-text", placeholder: "キーワードを入力して下さい", type: "text", value: ""}/
+      %ul.side_bar__menu
+        =link_to 'メインページ',"#", class:"side_bar__menu--list"
+        =link_to '新しいページ',"#", class:"side_bar__menu--list"
+        %li.side_bar__menu--list
+          ログアウト
+        -# = link_to "ログアウト", destroy_user_session_path,method: :delete, class: 'side_bar__menu--list'
+      .last_update
+      %p.last_update__title 最近更新されたページ
+      %ul.last_update__list
+        %li.last_update__list--page
+          %i.last_update__list--title タイトル
+          %i.last_update__list--caption 見出し
+          %i.last_update__list--time 更新時間
+        %li.last_update__list--page
+          %i.last_update__list--title タイトル
+          %i.last_update__list--caption 見出し
+          %i.last_update__list--time 更新時間
+        %li.last_update__list--page
+          %i.last_update__list--title タイトル
+          %i.last_update__list--caption 見出し
+          %i.last_update__list--time 更新時間
+        %li.last_update__list--page
+          %i.last_update__list--title タイトル
+          %i.last_update__list--caption 見出し
+          %i.last_update__list--time 更新時間
+        %li.last_update__list--page
+          %i.last_update__list--title タイトル
+          %i.last_update__list--caption 見出し
+          %i.last_update__list--time 更新時間
+    .main_page 
+      -# .header
+      -#   .search_form キーワードを入力してください
+      -#   .search_btn 検索
+      = yield

@@ -1,24 +1,51 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Database design
+## usersテーブル
+  |Column|Type|Options|
+  |------|----|-------|
+  |name|string|null: false,index: true|
+  |email_address|string|null: false,unique: true|
+  |password|string|null: false|
 
-Things you may want to cover:
+  ### Association
+  - has_many :pages
+  - has_many :contents
+  - has_many :comments
 
-* Ruby version
+## pagesテーブル
+  |Column|Type|Options|
+  |------|----|-------|
+  |title|string|null: false|
+  |user_id|references|null: false,foreign_key: true|
 
-* System dependencies
+  ### Association
+  - belongs_to :user
+  - has_many :contents
+  - has_many :conmmets
 
-* Configuration
+## contentsテーブル
+  |Column|Type|Options|
+  |------|----|-------|
+  |body|text||
+  |image|string||
+  |user_id|references|null: false, foreign_key: true|
+  |page_id|references|null: false, foreign_key: true|
+  |sort|integer|null: false|
+  |updated_at|datetime|null: false|
 
-* Database creation
+  ### Association
+  - belongs_to :user
+  - belongs_to :page
 
-* Database initialization
+## commentsテーブル
+  |Column|Type|Options|
+  |------|----|-------|
+  |body|text||
+  |pages_id|references|null: false, foreign_key: true|
+  |user_id|references|null: false, foreign_key: true|
+  |timestamp|datetime|null: false|
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+  ### Association
+  - belongs_to :user
+  - belongs_to :page

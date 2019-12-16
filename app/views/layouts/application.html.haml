@@ -17,7 +17,7 @@
         =link_to '記事一覧',"#", class:"side_bar__menu--list"
         =link_to '新しいページ',"#", class:"side_bar__menu--list"
         -if user_signed_in?
-          = link_to "ログアウト", destroy_user_session_path,method: :delete, class: 'side_bar__menu--list'
+          = link_to "アカウント編集 / ログアウト",edit_user_path(current_user),class: 'side_bar__menu--list'
         -else
           =link_to "ログイン", new_user_session_path, class: 'side_bar__menu--list'
         =link_to '管理者用','#',class:'side_bar__menu--list'

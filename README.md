@@ -27,7 +27,8 @@
 ## contentsテーブル
   |Column|Type|Options|
   |------|----|-------|
-  |body|text||
+  |topic|string|null: false|
+  |body|text|null: false|
   |image|string||
   |user_id|references|null: false, foreign_key: true|
   |page_id|references|null: false, foreign_key: true|

@@ -1,0 +1,6 @@
+.pages__page
+  = link_to page_path(page.id), class: "pages__page--title",data: {page_id: page.id} do
+    = page.title
+  .pages__page--date
+    created : 
+    = page.created_at.strftime("%Y/%m/%d %H:%M")

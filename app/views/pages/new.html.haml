@@ -1,0 +1,13 @@
+-if user_signed_in?
+  .new_page
+    = form_with(model: @page, local: true) do |form|
+      .h3
+        新規ページを作成する
+      = form.text_field :title, placeholder: "titleを入力して下さい"
+      = form.text_field :summary, placeholder: "要約文を入力して下さい"
+      = form.submit "SEND"
+-else
+  .new_page__need_login
+  新規ページ作成にはログインが必要です。
+  =link_to "ログイン", new_user_session_path, class: 'side_bar__menu--list'
+  =link_to "トップに戻る", root_path, class: 'side_bar__menu--list'

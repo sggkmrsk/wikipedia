@@ -17,8 +17,8 @@ class PagesController < ApplicationController
   end
 
   def show
-    # @content = Content.new
-    # @contents = @page.contents
+    @content = Content.new
+    @contents = @page.contents
     # @comment = Comment.new
     # @comments = @page.comments
   end

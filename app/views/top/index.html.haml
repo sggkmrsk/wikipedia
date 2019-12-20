@@ -1,0 +1,24 @@
+.contents
+  .about_this
+    %h1 About this
+    %p 簡易的なwikiページです
+
+  .last_info
+    .last_update
+      %p.last_update__title 最近更新されたページ
+      .last_update__list
+        - @contents.each do |content|
+          %ul.last_update__list--page
+            %li.last_update__list--title
+              = link_to content.title ,page_path(content.page_id)
+            %li.last_update__list--topic
+              = content.topic
+            %li.last_update__list--time
+              = content.updated_at.strftime("%Y/%m/%d %H:%M")
+
+    .last_comments
+      %p.last_comments__title 最近追加されたコメント
+      %ul.last_comments__list
+        %li.last_comments__list--title タイトル
+        %li.last_comments__list--comment コメント
+        %li.last_comments__list--time 追加された時間

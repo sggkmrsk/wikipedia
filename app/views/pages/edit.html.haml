@@ -1,0 +1,6 @@
+.edit
+  = form_with(model: @page, local: true) do |form|
+    = form.text_field :title, placeholder: @page.title,class:"edit__title"
+    = form.text_area :summary, placeholder: @page.summary,class:"edit__summary"
+    -# = form.text_field :image, placeholder: @page.image
+    = form.submit "UPDATE"

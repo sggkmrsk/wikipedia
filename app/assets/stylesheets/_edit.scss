@@ -1,0 +1,32 @@
+.edit{
+  box-sizing: border-box;
+  overflow: scroll;
+  &__title{
+    display:flex;
+    justify-content: space-between;
+    font-size: 50px;
+    font-weight: bold;
+  }
+  &__summary{
+    display: block;
+    padding:10px;
+    word-wrap: break-word;
+    width:calc(100vw - 280px - 80px - 30px);
+  }
+  &__contents{
+    width:calc(100vw - 280px - 80px);
+    &__content{
+      &--topic{
+        padding:30px 20px 5px;
+        font-size: 36px;
+        border-bottom:1px solid black;
+      }
+      &--body{
+
+      }
+    &__content:last-of-type::after{
+      content:"追加";
+    }
+    }
+  }
+}

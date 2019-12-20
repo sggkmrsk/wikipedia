@@ -1,11 +1,8 @@
 class PagesController < ApplicationController
-  before_action :set_page ,only: :show
-
-  def top
-  end
+  before_action :set_page ,only: [:show,:edit]
   
   def index
-    @pages = Page.all.order("created_at DESC")
+    @pages = Page.all.order("title")
   end
 
   def new
@@ -18,9 +15,19 @@ class PagesController < ApplicationController
 
   def show
     @content = Content.new
-    @contents = @page.contents
+    @contents = @page.contents.order("sort asc")
     # @comment = Comment.new
     # @comments = @page.comments
+  end
+
+  def edit
+    @content = Content.new
+    @contents = @page.contents.order("sort asc")
+  end
+
+  def update
+    Page.update(page_params)
+    redirect_to page_path
   end
 
   private

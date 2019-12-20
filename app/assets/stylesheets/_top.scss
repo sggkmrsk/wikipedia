@@ -1,0 +1,42 @@
+.contents{
+
+}
+.last_info{
+  padding-top: 100px;
+  display:flex;
+}
+.last_update{
+  margin-right:200px;
+  &__title{
+    font-size: 20px;
+    padding-bottom:15px;
+  }
+  &__list{
+
+    &--page{
+      margin-bottom:15px;
+      border-bottom:1px grey solid;
+      justify-content: space-between;
+    }
+
+  }
+}
+.last_comments{
+
+  &__title{
+    font-size: 20px;
+    padding-bottom:15px;
+  }
+}
+
+.last_update__list--title::before{
+  content:'タイトル：';
+}
+
+.last_update__list--topic::before{
+  content:'編集箇所：';
+}
+
+.last_update__list--time::before{
+  content:'更新日時：';
+}

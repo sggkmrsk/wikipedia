@@ -11,11 +11,11 @@
         .page__contents__content__topic
           %h2.page__contents__content__topic--text
             = content.topic
-          = link_to '編集',edit_page_content_path(content.id),class: 'page__contents__content__topic--edit-btn'
+          = link_to '編集',edit_page_content_path(@page.id, content.id),class: 'page__contents__content__topic--edit-btn'
         .page__contents__content--body
           = simple_format(content.body)
   .page__add-btn
-    追加
+    = link_to '追加',new_page_content_path(@page.id),class: 'page__contents__content--add-btn'
     -# .contents__content{data: {content_id: content.id}}
     -#   .contents__content--title
     -#     = @content.title

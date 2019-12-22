@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2019_12_17_112924) do
 
   create_table "contents", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "topic"
+    t.string "topic", null: false
     t.text "body"
     t.string "image"
     t.bigint "user_id", null: false
@@ -27,7 +27,8 @@ ActiveRecord::Schema.define(version: 2019_12_17_112924) do
 
   create_table "pages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title", default: "", null: false
-    t.string "summary", default: "", null: false
+    t.text "summary", null: false
+    t.string "image", default: ""
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

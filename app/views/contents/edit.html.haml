@@ -1,0 +1,7 @@
+.edit
+  = form_with(model: [@page,@content], local: true) do |form|
+    = form.text_field :topic, placeholder: @content.topic,class:"edit__topic"
+    = form.text_area :body, placeholder: @content.body,class:"edit__body",size: ("100x20")
+    = form.file_field :image, placeholder: @content.image,class:"edit__img"
+    = form.text_field :sort, placeholder: @i,class:"edit__img"
+    = form.submit "UPDATE"

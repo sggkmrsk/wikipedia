@@ -1,7 +1,7 @@
 class CreateContents < ActiveRecord::Migration[5.2]
   def change
     create_table :contents do |t|
-      t.string :topic
+      t.string :topic,null: false
       t.text :body
       t.string :image
       t.references :user ,null: false, foreign_key: true

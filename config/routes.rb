@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :edit, :update]
   resources :top ,only: :index
   resources :pages ,only: [:index,:new,:show,:create,:edit,:update,:destroy] do
-    resources :contents ,only: [:index,:edit,:create,:update]
+    resources :contents ,only: [:new,:edit,:create,:update]
   end
 end

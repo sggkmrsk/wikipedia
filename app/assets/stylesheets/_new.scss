@@ -1,4 +1,4 @@
-.edit{
+.new{
   box-sizing: border-box;
   overflow: scroll;
   // こっちはpage
@@ -14,21 +14,8 @@
     word-wrap: break-word;
     width:calc(100vw - 280px - 80px - 30px);
   }
-  &__contents{
-    width:calc(100vw - 280px - 80px);
-    &__content{
-      &--topic{
-        padding:30px 20px 5px;
-        font-size: 36px;
-        border-bottom:1px solid black;
-      }
-      &--body{
-
-      }
-    &__content:last-of-type::after{
-      content:"追加";
-    }
-    }
+  &__image{
+    display: block;
   }
   //こっちはcontent
   &__topic{
@@ -37,11 +24,19 @@
   }
   &__body{
     padding:10px;
-    width:calc(100vw - 280px - 80px - 40px);
+    // width:calc(100vw - 280px - 80px - 40px);
     display:block;
   }
-  &__img{
+  &__image{
     display:block;
   }
-
+  &__sort{
+    display:block;
+    width:40px;
+    text-align:right;
+  }
+  &__sort::after{
+    display:inline;
+    content:'番目に表示します';
+  }
 }

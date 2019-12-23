@@ -9,7 +9,7 @@
       .last_created__list
         %table.last_created__list--page
           %tr
-            %td.last_created__list--title タイトル
+            %td.last_created__list--title ページ
             %td.last_created__list--time 作成日時
           - @pages.each do |page|
             %tr
@@ -23,8 +23,8 @@
       .last_updated__list
         %table.last_updated__list--page
           %tr
-            %td.last_updated__list--title タイトル
-            %td.last_updated__list--topic 編集箇所
+            %td.last_updated__list--title ページ
+            %td.last_updated__list--topic 編集された項目
             %td.last_updated__list--time 更新日時
 
           - @contents.each do |content|
@@ -41,7 +41,7 @@
       .last_comments__list
         %table.last_comments__list--page
           %tr
-            %td.last_comments__list--title タイトル
+            %td.last_comments__list--title ページ
             %td.last_comments__list--comment コメント
             %td.last_comments__list--time 投稿日時
           - @comments.each do |comment|

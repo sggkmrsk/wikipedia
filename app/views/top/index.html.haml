@@ -4,21 +4,51 @@
     %p 簡易的なwikiページです
 
   .last_info
-    .last_update
-      %p.last_update__title 最近更新されたページ
-      .last_update__list
-        - @contents.each do |content|
-          %ul.last_update__list--page
-            %li.last_update__list--title
-              = link_to content.title ,page_path(content.page_id)
-            %li.last_update__list--topic
-              = content.topic
-            %li.last_update__list--time
-              = content.updated_at.strftime("%Y/%m/%d %H:%M")
+    .last_created
+      %p.last_created__title 最近作成されたページ
+      .last_created__list
+        %table.last_created__list--page
+          %tr
+            %td.last_created__list--title タイトル
+            %td.last_created__list--time 作成日時
+          - @pages.each do |page|
+            %tr
+              %td
+                = link_to page.title ,page_path(page.id)
+              %td
+                = page.created_at.strftime("%Y/%m/%d %H:%M")
+
+    .last_updated
+      %p.last_updated__title 最近更新されたページ
+      .last_updated__list
+        %table.last_updated__list--page
+          %tr
+            %td.last_updated__list--title タイトル
+            %td.last_updated__list--topic 編集箇所
+            %td.last_updated__list--time 更新日時
+
+          - @contents.each do |content|
+            %tr
+              %td
+                = link_to content.title ,page_path(content.page_id)
+              %td
+                = content.topic
+              %td
+                = content.updated_at.strftime("%Y/%m/%d %H:%M")
 
     .last_comments
       %p.last_comments__title 最近追加されたコメント
-      %ul.last_comments__list
-        %li.last_comments__list--title タイトル
-        %li.last_comments__list--comment コメント
-        %li.last_comments__list--time 追加された時間
+      .last_comments__list
+        %table.last_comments__list--page
+          %tr
+            %td.last_comments__list--title タイトル
+            %td.last_comments__list--comment コメント
+            %td.last_comments__list--time 投稿日時
+          - @comments.each do |comment|
+            %tr
+              %td
+                = link_to comment.title ,page_path(comment.page_id)
+              %td
+                = comment.comment[0,25]
+              %td
+                = comment.created_at.strftime("%Y/%m/%d %H:%M")

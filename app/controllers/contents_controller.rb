@@ -5,8 +5,8 @@ class ContentsController < ApplicationController
   before_action :move_ajust_sort , only: :update
 
   def new
-    if sort = @page.contents.where(page_id: @page.id).order("sort desc").first.sort
-       sort = sort + 1
+    if content = @page.contents.where(page_id: @page.id).order("sort desc").first
+       sort = content.sort + 1
     else
       sort = 1
     end

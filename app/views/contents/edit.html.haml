@@ -2,6 +2,9 @@
   = form_with(model: [@page,@content], local: true) do |form|
     = form.text_field :topic, placeholder: @content.topic,class:"edit__topic"
     = form.text_area :body, placeholder: @content.body,class:"edit__body",size: ("100x20")
-    = form.file_field :image, placeholder: @content.image,class:"edit__img"
-    = form.text_field :sort, placeholder: @i,class:"edit__img"
-    = form.submit "UPDATE"
+    = form.label :image,"file",class:"edit__image" do
+      ファイルを選択
+      = form.file_field :image,class:"edit__image--hidden"
+    = form.text_field :sort, placeholder: @i,class:"edit__sort"
+    = form.submit "UPDATE",class:"edit__update-btn"
+  = link_to '削除',page_content_path(@page.id, @content.id), method: :delete,class:"edit__delete-btn"

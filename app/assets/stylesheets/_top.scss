@@ -2,11 +2,9 @@
 
 }
 .last_info{
-  padding-top: 100px;
-  display:flex;
 }
-.last_update{
-  margin-right:200px;
+.last_created{
+  margin-top:40px;
   &__title{
     font-size: 20px;
     padding-bottom:15px;
@@ -18,25 +16,68 @@
       border-bottom:1px grey solid;
       justify-content: space-between;
     }
-
+    &--title{
+      width:250px;
+      border-bottom:1px grey solid;
+    }
+    &--time{
+      width:250px;
+      border-bottom:1px grey solid;
+    }
   }
 }
-.last_comments{
-
+.last_updated{
+  margin-top:40px;
   &__title{
     font-size: 20px;
     padding-bottom:15px;
   }
+  &__list{
+
+    &--page{
+      margin-bottom:15px;
+      border-bottom:1px grey solid;
+      justify-content: space-between;
+    }
+    &--title{
+      width:250px;
+      border-bottom:1px grey solid;
+    }
+    &--topic{
+      width:500px;
+      border-bottom:1px grey solid;
+    }
+    &--time{
+      width:250px;
+      border-bottom:1px grey solid;
+    }
+  }
+}
+.last_comments{
+  margin-top:40px;
+  &__title{
+    font-size: 20px;
+    padding-bottom:15px;
+  }
+  &__list{
+
+    &--page{
+      margin-bottom:15px;
+      border-bottom:1px grey solid;
+      justify-content: space-between;
+    }
+    &--title{
+      width:250px;
+      border-bottom:1px grey solid;
+    }
+    &--comment{
+      width:500px;
+      border-bottom:1px grey solid;
+    }
+    &--time{
+      width:250px;
+      border-bottom:1px grey solid;
+    }
+  }
 }
 
-.last_update__list--title::before{
-  content:'タイトル：';
-}
-
-.last_update__list--topic::before{
-  content:'編集箇所：';
-}
-
-.last_update__list--time::before{
-  content:'更新日時：';
-}

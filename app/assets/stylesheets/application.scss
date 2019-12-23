@@ -1,2 +1,54 @@
 @import "./reset";
+@import "./top";
 @import "./pages";
+@import "./new";
+@import "./edit";
+
+
+html{
+  margin:0;
+  padding:0;
+}
+
+body{
+  display:flex;
+}
+
+h1{
+  font-weight: bold;
+  font-size: 32px;
+}
+
+li{
+  list-style: none;
+}
+
+.side_bar{
+  position:fixed;
+  box-sizing: border-box;
+  width:280px;
+  height: 100vh;
+  border-right: solid 1px black;
+  padding:20px;
+  &__title{
+    padding-bottom:15px;
+  }
+  &__search_box{
+    width:236px;
+  }
+  &__menu{
+    padding-top:25px;
+    &--list{
+      display:block;
+      padding-bottom: 10px;
+    }
+  }
+}
+
+.main_page{
+  margin-left:280px;
+  padding:20px 40px;
+  box-sizing: border-box;
+  overflow: scroll;
+  width:calc(100vw - 280px);
+}

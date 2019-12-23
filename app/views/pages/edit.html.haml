@@ -1,0 +1,8 @@
+.edit
+  = form_with(model: @page, local: true) do |form|
+    = form.text_field :title, placeholder: @page.title,class:"edit__title"
+    = form.text_area :summary, placeholder: @page.summary,class:"edit__summary"
+    = form.label :image,"file",class:"edit__image" do
+      ファイルを選択
+      = form.file_field :image,class:"edit__image--hidden"
+    = form.submit "UPDATE",class:"edit__update-btn"

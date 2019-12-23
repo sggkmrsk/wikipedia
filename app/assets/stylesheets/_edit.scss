@@ -1,0 +1,50 @@
+.edit{
+  box-sizing: border-box;
+  overflow: scroll;
+  // こっちはpage
+  &__title{
+    display:flex;
+    justify-content: space-between;
+    font-size: 50px;
+    font-weight: bold;
+  }
+  &__summary{
+    display: block;
+    padding:10px;
+    word-wrap: break-word;
+    width:calc(100vw - 280px - 80px - 30px);
+  }
+  &__image{
+    display: block;
+    &--hidden{
+      display: none;
+    }
+  }
+  //こっちはcontent
+  &__topic{
+    font-size: 36px;
+    display:block;
+  }
+  &__body{
+    padding:10px;
+    // width:calc(100vw - 280px - 80px - 40px);
+    display:block;
+  }
+  &__image{
+    display:block;
+  }
+  &__sort{
+    display:block;
+    width:40px;
+    text-align:right;
+  }
+  &__update-btn{
+    display:block;
+    &--hidden{
+      display:none;
+    }
+  }
+  &__delete-btn{
+    display:block;
+  }
+}

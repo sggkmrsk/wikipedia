@@ -1,0 +1,31 @@
+.searches
+  検索結果
+  - @searches_pages.each do |search_page|
+    .searches__search
+      .searches__search--title
+        = search_page.title
+      .searches__search--summary
+        = search_page.summary
+      .searches__search--date
+        created : 
+        = search_page.created_at.strftime("%Y/%m/%d %H:%M")
+  - @searches_contents.each do |search_content|
+    .searches__search
+      .searches__search--title
+        = search_content.page.title
+      .seaeches__search--topic
+        = search_content.topic
+      .searches__search--body
+        = search_content.body
+      .searches__search--date
+        created : 
+        = search_content.created_at.strftime("%Y/%m/%d %H:%M")
+  - @searches_comments.each do |search_comment|
+    .searches__search
+      .searches__search--title
+        = search_comment.page.title
+      .seaeches__search--comment
+        = search_comment.comment
+      .searches__search--date
+        created : 
+        = search_comment.created_at.strftime("%Y/%m/%d %H:%M")

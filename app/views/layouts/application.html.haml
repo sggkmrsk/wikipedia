@@ -11,7 +11,9 @@
     .side_bar
       %h1.side_bar__title
         Simple wiki
-      %input.side_bar__search_box{name: "search-text", placeholder: "キーワードを入力して下さい", type: "text", value: ""}/
+      = form_with(url: searches_path, local: true, method: :get, class: "search-form") do |form|
+        = form.text_field :keyword, placeholder: "キーワードで検索する", class: "search-input"
+        = form.submit "検索", class: "search-btn"
       %ul.side_bar__menu
         =link_to 'メインページ',root_path, class:"side_bar__menu--list"
         =link_to '記事一覧',pages_path, class:"side_bar__menu--list"

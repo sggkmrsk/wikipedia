@@ -16,6 +16,12 @@
   }
   &__image{
     display: block;
+    width:200px;
+    height:200px;
+    border:1px solid black;
+    &--hidden{
+      display:none;
+    }
   }
   //こっちはcontent
   &__topic{
@@ -29,9 +35,15 @@
   }
   &__image{
     display:block;
+    width:200px;
+    height:200px;
+    border:1px solid black;
+    &--hidden{
+      display:none;
+    }
   }
   &__sort{
-    display:block;
+    display:inline-block;
     width:40px;
     text-align:right;
   }

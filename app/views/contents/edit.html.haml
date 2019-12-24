@@ -5,6 +5,8 @@
     = form.label :image,"file",class:"edit__image" do
       ファイルを選択
       = form.file_field :image,class:"edit__image--hidden"
-    = form.text_field :sort, placeholder: @i,class:"edit__sort"
+    = form.label :sort do
+      = form.number_field :sort, placeholder: @content.sort,class:"edit__sort"
+      番目に表示
     = form.submit "UPDATE",class:"edit__update-btn"
   = link_to '削除',page_content_path(@page.id, @content.id), method: :delete,class:"edit__delete-btn"

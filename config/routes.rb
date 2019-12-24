@@ -7,4 +7,5 @@ Rails.application.routes.draw do
     resources :contents ,only: [:new,:edit,:create,:update,:destroy]
     resources :comments ,only: [:new,:create,:destroy]
   end
+  resources :searches,only: :index
 end

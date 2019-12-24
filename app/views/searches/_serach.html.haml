@@ -1,0 +1,7 @@
+.pages__page
+  = search.title
+  .pages__page--summary
+    = search.summary
+  .pages__page--date
+    created : 
+    = search.created_at.strftime("%Y/%m/%d %H:%M")

@@ -8,11 +8,11 @@
   = image_tag @page.image.url, class: 'page__image' if @page.image.present?
   .page__contents
     - @contents.each_with_index do |content,i|
-      .page__contents__content{data: {content_id: i + 1}}
+      .page__contents__content{id: "content#{content.sort}"}
         .page__contents__content__topic
           %h2.page__contents__content__topic--text
             = content.topic
-          = link_to '編集',edit_page_content_path(@page.id, content.id),class: 'page__contents__content__topic--edit-btn'
+          = link_to '編集',edit_page_content_path(@page.id, content.id),class: 'page__contents__content__topic--edit-btn',data: {page_id: @page.id,content_id: content.id}
         .page__contents__content--body
           = simple_format(content.body)
         .page__image
@@ -20,7 +20,7 @@
         .page__contents__content--user
           最終更新 ：
           = content.user.name
-    = link_to '項目を追加',new_page_content_path(@page.id),class: 'page__contents__add-btn'
+    = link_to '項目を追加',new_page_content_path(@page.id),class: 'page__contents__add-btn',data:{page_id: @page.id}
   .page__comments
     .page__comments__form
       = form_with(model: [@page,@comment], local: true) do |form|

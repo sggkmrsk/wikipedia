@@ -10,7 +10,12 @@ class ContentsController < ApplicationController
     else
       sort = 1
     end
-      @content = Content.new(sort: sort)
+
+    @content = Content.new(sort: sort)
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def create
@@ -20,6 +25,10 @@ class ContentsController < ApplicationController
 
   def edit
     @content = @page.contents.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def update

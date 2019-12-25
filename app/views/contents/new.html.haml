@@ -4,9 +4,8 @@
     = form.text_area :body, placeholder: "内容を入力して下さい",class:"new__body",size:"100x15"
     = form.label :image,class:"new__image" do
       ファイルを選択
-      サムネイルを表示したい
       = form.file_field :image, placeholder:"",class:"new__image--hidden"
-    = form.label :sort,class:"new__sort" do
+    = form.label :sort do
       = form.number_field :sort, placeholder:"",class:"new__sort"
       番目に表示
-    = form.submit "SEND"
+    = form.submit "SEND",class:"new__create-btn"

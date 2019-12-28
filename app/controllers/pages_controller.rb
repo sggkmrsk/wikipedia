@@ -10,9 +10,12 @@ class PagesController < ApplicationController
   end
 
   def create
-    Page.create(page_params)
-    page = Page.order("id desc").first
-    redirect_to page_path(page.id)
+    if Page.create(page_params).save
+      page = Page.order("id desc").first
+      redirect_to page_path(page.id)
+    else
+      redirect_to new_page_path
+    end
   end
 
   def show
@@ -23,6 +26,10 @@ class PagesController < ApplicationController
   end
 
   def edit
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def update

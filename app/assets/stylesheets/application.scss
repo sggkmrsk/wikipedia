@@ -1,8 +1,7 @@
 @import "./reset";
 @import "./top";
 @import "./pages";
-@import "./new";
-@import "./edit";
+@import "./form";
 
 
 html{
@@ -17,10 +16,6 @@ body{
 h1{
   font-weight: bold;
   font-size: 32px;
-}
-
-li{
-  list-style: none;
 }
 
 .side_bar{

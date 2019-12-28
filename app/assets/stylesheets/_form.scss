@@ -1,4 +1,4 @@
-.new{
+.form{
   box-sizing: border-box;
   overflow: scroll;
   // こっちはpage
@@ -16,8 +16,8 @@
   }
   &__image{
     display: block;
-    width:200px;
-    height:200px;
+    min-width:200px;
+    min-height:200px;
     border:1px solid black;
     &--hidden{
       display:none;
@@ -35,8 +35,8 @@
   }
   &__image{
     display:block;
-    width:200px;
-    height:200px;
+    min-width:200px;
+    min-height:200px;
     border:1px solid black;
     &--hidden{
       display:none;
@@ -48,6 +48,15 @@
     text-align:right;
   }
   &__create-btn{
-    display:block;
+    display:inline-block;
+  }
+  &__update-btn{
+    display:inline-block;
+  }
+  &__delete-btn{
+    display:inline-block;
+  }
+  &__cancel-btn{
+    display:inline-block;
   }
 }

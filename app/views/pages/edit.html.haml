@@ -1,8 +1,8 @@
-.edit
+.form
   = form_with(model: @page, local: true) do |form|
-    = form.text_field :title, placeholder: @page.title,class:"edit__title"
-    = form.text_area :summary, placeholder: @page.summary,class:"edit__summary",size:"100x20"
-    = form.label :image,"file",class:"edit__image" do
+    = form.text_field :title, placeholder: @page.title,class:"form__title"
+    = form.text_area :summary, placeholder: @page.summary,class:"form__summary",size:"115x15"
+    = form.label :image,"file",class:"form__image" do
       ファイルを選択
-      = form.file_field :image,class:"edit__image--hidden"
-    = form.submit "UPDATE",class:"edit__update-btn"
+      = form.file_field :image,class:"form__image--hidden"
+    = form.submit "UPDATE",class:"form__update-btn"

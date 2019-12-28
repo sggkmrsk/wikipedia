@@ -40,4 +40,4 @@
             = comment.created_at.strftime("%Y/%m/%d %H:%M")
           %td.page__comments__table--delete
             %button.page__comments__table--delete-btn
-              DELETE
+              = link_to 'DELETE',page_comment_path(@page.id,comment.id),method: :delete,data:{confirm:'このコメントを削除していいですか？',disable_with:'処理中...'}

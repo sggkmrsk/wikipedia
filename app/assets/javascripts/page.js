@@ -9,9 +9,10 @@ $(function(){
                       <input type="hidden" name="authenticity_token" value="${csrf_token}">
                       <input placeholder="${page.title}" class="form__title" type="text" value="${page.title}" name="page[title]" id="page_title">
                       <textarea placeholder="${page.summary}" class="form__summary" name="page[summary]" id="page_summary" cols="115" rows="10">${page.summary}</textarea>
-                      <label for="page_image">
+                      <label class="form__image" for="page_image">
                         <input class="form__image--hidden" type="file" name="page[image]" id="page_image">
-                        <img class="form__image" src="${page.image}"></label>
+                        <img src="${page.image}"></label>
+                      <button class="form__image--clear-btn" type="button">clear</button>
                       <input type="submit" name="commit" value="UPDATE" class="form__update-btn" data-disable-with="UPDATE">
                       <input type="button" value="CANCEL" class="form__cancel-btn">
                     </form>
@@ -26,6 +27,7 @@ $(function(){
                       <textarea placeholder="${page.summary}" class="form__summary" name="page[summary]" id="page_summary" cols="115" rows="10">${page.summary}</textarea>
                       <label class="form__image" for="page_image">ファイルを選択
                         <input class="form__image--hidden" type="file" name="page[image]" id="page_image"></label>
+                      <button class="form__image--clear-btn" type="button">clear</button>
                       <input type="submit" name="commit" value="UPDATE" class="form__update-btn" data-disable-with="UPDATE">
                       <input type="button" value="CANCEL" class="form__cancel-btn">
                     </form>
@@ -43,16 +45,23 @@ $(function(){
                       <input type="hidden" name="authenticity_token" value="${csrf_token}">
                       <input placeholder="${content.topic}" class="form__topic" type="text" value="${content.topic}" name="content[topic]" id="content_topic">
                       <textarea placeholder="${content.body}" class="form__body" name="content[body]" id="content_body" cols="115" rows="15">${content.body}</textarea>
-                      <label for="content_image">
-                        <img class="form__image" src="${content.image}">
-                        <input class="form__image--hidden" type="file" name="content[image]" id="content_image"></label>
+                      <div class="form__image" id="form__image">
+                        <label for="content_image">
+                          <img src="${content.image}">
+                          <input class="form__image--hidden" type="file" name="content[image]" id="content_image"></label>
+                        <button class="form__image--clear-btn" type="button">clear</button>
+                      </div>
                       <label for="content_sort">
-                        <input placeholder="${content.sort}" class="form__sort" type="number" value="${content.sort}" name="content[sort]" id="content_sort">番目に表示</label>
+                        <input placeholder="${content.sort}" class="form__sort" type="number" value="${content.sort}" min="1" name="content[sort]" id="content_sort">番目に表示</label>
                       <input type="submit" name="commit" value="UPDATE" class="form__update-btn" data-disable-with="UPDATE">
                     </form>
                     <input type="button" value="CANCEL" class="form__cancel-btn" rel="nofollow" data-method="CANCEL">
-                    <input type="button" value="DELETE" class="form__delete-btn" rel="nofollow" data-method="DELETE">
-                  </div>`;
+                    <button>
+                      <a class="form__delete-btn" data-confirm="この項目を削除していいですか？" data-disable-with="処理中..." rel="nofollow" data-method="delete" href="/pages/${content.page_id}/contents/${content.id}">DELETE</a>
+                    </button>
+                    </div>`;
+                                      // <input type="button" value="DELETE" class="form__delete-btn" rel="nofollow" data-method="DELETE">
+
     } else{
       var html = `<div class="form" id="content${content.sort}">
                     <form enctype="multipart/form-data" action="/pages/${content.page_id}/contents/${content.id}" accept-charset="UTF-8" method="post">
@@ -63,13 +72,18 @@ $(function(){
                       <textarea placeholder="${content.body}" class="form__body" name="content[body]" id="content_body" cols="115" rows="15">${content.body}</textarea>
                       <label class="form__image" for="content_image">ファイルを選択
                         <input class="form__image--hidden" type="file" name="content[image]" id="content_image"></label>
+                      <button class="form__image--clear-btn" type="button">clear</button>
                       <label for="content_sort">
-                        <input placeholder="${content.sort}" class="form__sort" type="number" value="${content.sort}" name="content[sort]" id="content_sort">番目に表示</label>
+                        <input placeholder="${content.sort}" class="form__sort" type="number" value="${content.sort}" min="1" name="content[sort]" id="content_sort">番目に表示</label>
                       <input type="submit" name="commit" value="UPDATE" class="form__update-btn" data-disable-with="UPDATE">
                     </form>
                     <input type="button" value="CANCEL" class="form__cancel-btn" rel="nofollow" data-method="CANCEL">
-                    <input type="button" value="DELETE" class="form__delete-btn" rel="nofollow" data-method="DELETE">
+                    <button>
+                      <a class="form__delete-btn" data-confirm="この項目を削除していいですか？" data-disable-with="処理中..." rel="nofollow" data-method="delete" href="/pages/${content.page_id}/contents/${content.id}">DELETE</a>
+                    </button>
                   </div>`;
+                  // <input type="button" value="DELETE" class="form__delete-btn" rel="nofollow" data-method="DELETE">
+
     }
     return html;
   }
@@ -83,7 +97,9 @@ $(function(){
                     <label class="form__image" for="content_image">
                       ファイルを選択
                       <input placeholder="" class="form__image--hidden" type="file" name="content[image]" id="content_image"></label>
-                    <label for="content_sort"><input placeholder="" class="form__sort" type="number" value=${content.sort} max="${content.sort}" name="content[sort]" id="content_sort">
+                    <button class="form__image--clear-btn" type="button">clear</button>
+                    <label for="content_sort">
+                      <input placeholder="" class="form__sort" type="number" value=${content.sort} min="1" max="${content.sort}" name="content[sort]" id="content_sort">
                       番目に表示</label>
                     <input type="submit" name="commit" value="SEND" class="form__create-btn" data-disable-with="SEND">
                     <input type="button" value="DELETE" class="form__cancel-btn" rel="nofollow" data-method="CANCEL">
@@ -158,7 +174,6 @@ $(function(){
     })
     .done(function(content) {
       var csrf_token = getCsrfToken(csrf_token)
-      console.log(csrf_token)
       var id = $(".page__contents__add-btn").attr("data-page-id")
       var html = buildNewHTML(content,id,csrf_token);
       $(".page__contents__add-btn").replaceWith(html)
@@ -167,4 +182,51 @@ $(function(){
       alert("通信エラーです。通信状況を確認して下さい");
     });
   })
+
+    function buildClearPageImageHTML(){
+      var html = `<div class="form__image" id="form__image">
+                  <label for="content_image">
+                    <input class="form__image--hidden" type="file" name="content[image]" id="content_image">
+                    <div class="form__image--preview">ファイルを選択</div></label>
+                  <button class="form__image--clear-btn" type="button">clear</button>
+                  </div>`
+      return html;
+    }
+
+    $(document).on("click",".form__image--clear-btn",function(){
+      var html = buildClearPageImageHTML();
+      $("#form__image").replaceWith(html);
+    })
+
+    $(document).on('change','.form__image', 'input[type="file"]', function(e) {
+      console.log('success')
+      var file = e.target.files[0],
+          reader = new FileReader(),
+          $preview = $(".form__image--preview");
+          t = this;
+  
+      // 画像ファイル以外の場合は何もしない
+      if(file.type.indexOf("image") < 0){
+        return false;
+      }
+  
+      // ファイル読み込みが完了した際のイベント登録
+      reader.onload = (function(file) {
+        return function(e) {
+          //既存のプレビューを削除
+          $preview.empty();
+          console.log('success')
+          // .prevewの領域の中にロードした画像を表示するimageタグを追加
+          $preview.append($('<img>').attr({
+                    src: e.target.result,
+                    width: "400px",
+                    height:"400px",
+                    class: "form__image--preview",
+                    title: file.name
+                }));
+        };
+      })(file);
+  
+      reader.readAsDataURL(file);
+    });
 });

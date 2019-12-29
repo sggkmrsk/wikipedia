@@ -2,11 +2,20 @@
   = form_with(model: [@page,@content], local: true) do |form|
     = form.text_field :topic, placeholder: @content.topic,class:"form__topic"
     = form.text_area :body, placeholder: @content.body,class:"form__body",size: ("115x15")
-    = form.label :image,"file",class:"form__image" do
-      ファイルを選択
-      = form.file_field :image,class:"form__image--hidden"
-    = form.label :sort do
-      = form.number_field :sort, placeholder: @content.sort,max: @content.sort,class:"form__sort"
-      番目に表示
-    = form.submit "UPDATE",class:"form__update-btn"
-  = link_to '削除',page_content_path(@page.id, @content.id), method: :delete,class:"form__delete-btn"
+    #form__image
+      = form.label :image ,class:"form__image" do
+        = form.file_field :image,class:"form__image--hidden"
+        -if @content.image.present?
+          = image_tag @content.image.url,class:"form__image--preview" 
+        -else
+          .form__image--preview ファイルを選択
+        %button.form__image--clear-btn clear
+    = form.label :sort,class:"form__sort" do
+      = form.number_field :sort, placeholder: @content.sort,min: "1",max: @content.sort
+    %p.form__sort--text 番目に表示
+    .form__button
+      = form.submit "UPDATE",class:"form__button--update-btn"
+      %button.form__button--cancel-btn
+        CANCEL
+      %button 
+        = link_to 'DELETE',page_content_path(@page.id, @content.id), method: :delete,class:"form__button--delete-btn",data:{confirm:'この項目を削除していいですか？',disable_with:'処理中...'}

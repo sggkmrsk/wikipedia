@@ -32,7 +32,6 @@ class ContentsController < ApplicationController
   end
 
   def update
-    binding.pry
     content = Content.find(params[:id])
     content.update(content_params)
     redirect_to page_path(@page.id)

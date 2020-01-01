@@ -16,8 +16,10 @@ $(function(){
                           <button class="form__image--clear-btn" id="page-image-clear" type="button">clear</button>
                         </label>
                       </div>
-                      <input type="submit" name="commit" value="UPDATE" class="form__update-btn" data-disable-with="UPDATE">
-                      <input type="button" value="CANCEL" class="form__cancel-btn">
+                      <div class="btn-area">
+                        <input type="submit" name="commit" value="UPDATE" class="form__btn-area__update-btn" data-disable-with="UPDATE">
+                        <input type="button" value="CANCEL" class="form__btn-area__cancel-btn">
+                      </div>
                     </form>
                   </div>`;
     } else {
@@ -61,14 +63,16 @@ $(function(){
                       </div>
                       <label for="content_sort">
                         <input placeholder="${content.sort}" class="form__sort" type="number" value="${content.sort}" min="1" name="content[sort]" id="content_sort">番目に表示</label>
-                      <input type="submit" name="commit" value="UPDATE" class="form__update-btn" data-disable-with="UPDATE">
+                      <div class="form__btn-area">
+                        <input type="submit" name="commit" value="UPDATE" class="form__btn-area__update-btn" data-disable-with="UPDATE">
+                        <input type="button" value="CANCEL" class="form__btn-area__cancel-btn" rel="nofollow" data-method="CANCEL">
+                        <button>
+                          <a class="form__btn-area__delete-btn" data-confirm="この項目を削除していいですか？" data-disable-with="処理中..." rel="nofollow" data-method="delete" href="/pages/${content.page_id}/contents/${content.id}">DELETE</a>
+                        </button>
+                      </div>
                     </form>
-                    <input type="button" value="CANCEL" class="form__cancel-btn" rel="nofollow" data-method="CANCEL">
-                    <button>
-                      <a class="form__delete-btn" data-confirm="この項目を削除していいですか？" data-disable-with="処理中..." rel="nofollow" data-method="delete" href="/pages/${content.page_id}/contents/${content.id}">DELETE</a>
-                    </button>
-                    </div>`;
-                                      // <input type="button" value="DELETE" class="form__delete-btn" rel="nofollow" data-method="DELETE">
+                  </div>`;
+                    // <input type="button" value="DELETE" class="form__delete-btn" rel="nofollow" data-method="DELETE">
 
     } else{
       var html = `<div class="form" id="content${content.sort}">
@@ -87,14 +91,16 @@ $(function(){
                      </div>
                       <label for="content_sort">
                         <input placeholder="${content.sort}" class="form__sort" type="number" value="${content.sort}" min="1" name="content[sort]" id="content_sort">番目に表示</label>
-                      <input type="submit" name="commit" value="UPDATE" class="form__update-btn" data-disable-with="UPDATE">
+                      <div class="form__btn-area">
+                        <input type="submit" name="commit" value="UPDATE" class="form__btn-area__update-btn" data-disable-with="UPDATE">
+                        <input type="button" value="CANCEL" class="form__btn-area__cancel-btn" rel="nofollow" data-method="CANCEL">
+                        <button>
+                           <a class="form__btn-area__delete-btn" data-confirm="この項目を削除していいですか？" data-disable-with="処理中..." rel="nofollow" data-method="delete" href="/pages/${content.page_id}/contents/${content.id}">DELETE</a>
+                         </button>
+                      </div>
                     </form>
-                    <input type="button" value="CANCEL" class="form__cancel-btn" rel="nofollow" data-method="CANCEL">
-                    <button>
-                      <a class="form__delete-btn" data-confirm="この項目を削除していいですか？" data-disable-with="処理中..." rel="nofollow" data-method="delete" href="/pages/${content.page_id}/contents/${content.id}">DELETE</a>
-                    </button>
                   </div>`;
-                  // <input type="button" value="DELETE" class="form__delete-btn" rel="nofollow" data-method="DELETE">
+                  // <input type="button" value="DELETE" data-confirm="この項目を削除していいですか？" data-disable-with="処理中..." class="form__delete-btn" rel="nofollow" data-method="DELETE">
 
     }
     return html;
@@ -116,8 +122,10 @@ $(function(){
                     <label for="content_sort">
                       <input placeholder="" class="form__sort" type="number" value=${content.sort} min="1" max="${content.sort}" name="content[sort]" id="content_sort">
                       番目に表示</label>
-                    <input type="submit" name="commit" value="SEND" class="form__create-btn" data-disable-with="SEND">
-                    <input type="button" value="DELETE" class="form__cancel-btn" rel="nofollow" data-method="CANCEL">
+                    <div class="form__btn-area">
+                      <input type="submit" name="commit" value="SEND" class="form__btn-area__create-btn" data-disable-with="SEND">
+                      <input type="button" value="CANCEL" class="form__btn-area__cancel-btn" rel="nofollow" data-method="CANCEL">
+                    </div>
                   </form>
                 </div>`;
     return html;
@@ -198,6 +206,7 @@ $(function(){
     });
   })
 
+  //clearを押したとき（page）
     function buildClearPageImageHTML(){
       var html = `<div id="form__image">
                     <label class="form__image" for="page_image">
@@ -208,6 +217,7 @@ $(function(){
                   </div>`
       return html;
     }
+    //clearを押したとき（content）
     function buildClearContentImageHTML(){
       var html = `<div id="form__image">
                     <label class="form__image" for="content_image">

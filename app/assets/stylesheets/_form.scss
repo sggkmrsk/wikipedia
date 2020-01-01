@@ -64,16 +64,23 @@
       display:inline-block;      
     }
   }
-  &__create-btn{
-    display:inline-block;
-  }
-  &__update-btn{
-    display:block;
-  }
-  &__delete-btn{
-    display:block;
-  }
-  &__cancel-btn{
-    display:inline-block;
+  &__btn-area{
+    width:50vw;
+    display:flex;
+    margin:20px 0;
+    justify-content: space-between;
+    &__create-btn{
+      display:inline-block;
+    }
+    &__update-btn{
+      display:inline-block;
+    }
+    &__delete-btn{
+      display:inline-block;
+      text-decoration: none;
+    }
+    &__cancel-btn{
+      display:inline-block;
+    }
   }
 }

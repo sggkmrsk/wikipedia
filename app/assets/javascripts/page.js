@@ -213,7 +213,7 @@ $(function(){
                     <label class="form__image" for="content_image">
                       <input class="form__image--hidden" type="file" name="content[image]" id="content_image">
                       <div class="form__image--preview">ファイルを選択</div>
-                      <button class="form__image--clear-btn" id="page-image-clear" type="button">clear</button>
+                      <button class="form__image--clear-btn" id="content-image-clear" type="button">clear</button>
                     </label>
                   </div>`
       return html;

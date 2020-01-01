@@ -6,7 +6,7 @@
       ファイルを選択
       = form.file_field :image, placeholder:"",class:"form__image--hidden"
     = form.label :sort do
-      = form.number_field :sort, placeholder:"",class:"form__sort"
+      = form.number_field :sort, placeholder:"",min:"1",max:@content.sort,class:"form__sort"
       番目に表示
     = form.submit "SEND",class:"form__create-btn"
     %button.form__cancel-btn

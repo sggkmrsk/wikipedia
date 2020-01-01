@@ -9,10 +9,13 @@ $(function(){
                       <input type="hidden" name="authenticity_token" value="${csrf_token}">
                       <input placeholder="${page.title}" class="form__title" type="text" value="${page.title}" name="page[title]" id="page_title">
                       <textarea placeholder="${page.summary}" class="form__summary" name="page[summary]" id="page_summary" cols="115" rows="10">${page.summary}</textarea>
-                      <label class="form__image" for="page_image">
-                        <input class="form__image--hidden" type="file" name="page[image]" id="page_image">
-                        <img src="${page.image}"></label>
-                      <button class="form__image--clear-btn" type="button">clear</button>
+                      <div id="form__image">
+                        <label class="form__image" for="page_image">
+                          <input class="form__image--hidden" type="file" name="page[image]" id="page_image">
+                          <img src="${page.image}" class="form__image--preview">
+                          <button class="form__image--clear-btn" id="page-image-clear" type="button">clear</button>
+                        </label>
+                      </div>
                       <input type="submit" name="commit" value="UPDATE" class="form__update-btn" data-disable-with="UPDATE">
                       <input type="button" value="CANCEL" class="form__cancel-btn">
                     </form>
@@ -25,9 +28,13 @@ $(function(){
                       <input type="hidden" name="authenticity_token" value="${csrf_token}">
                       <input placeholder="${page.title}" class="form__title" type="text" value="${page.title}" name="page[title]" id="page_title">
                       <textarea placeholder="${page.summary}" class="form__summary" name="page[summary]" id="page_summary" cols="115" rows="10">${page.summary}</textarea>
-                      <label class="form__image" for="page_image">ファイルを選択
-                        <input class="form__image--hidden" type="file" name="page[image]" id="page_image"></label>
-                      <button class="form__image--clear-btn" type="button">clear</button>
+                      <div id="form__image">
+                        <label class="form__image" for="page_image">
+                          <input class="form__image--hidden" type="file" name="page[image]" id="page_image">
+                          <div class="form__image--preview">ファイルを選択</div>
+                          <button class="form__image--clear-btn" id="page-image-clear" type="button">clear</button>
+                        </label>
+                      </div>
                       <input type="submit" name="commit" value="UPDATE" class="form__update-btn" data-disable-with="UPDATE">
                       <input type="button" value="CANCEL" class="form__cancel-btn">
                     </form>
@@ -47,9 +54,10 @@ $(function(){
                       <textarea placeholder="${content.body}" class="form__body" name="content[body]" id="content_body" cols="115" rows="15">${content.body}</textarea>
                       <div class="form__image" id="form__image">
                         <label for="content_image">
-                          <img src="${content.image}">
-                          <input class="form__image--hidden" type="file" name="content[image]" id="content_image"></label>
-                        <button class="form__image--clear-btn" type="button">clear</button>
+                          <input class="form__image--hidden" type="file" name="content[image]" id="content_image">
+                          <img src="${content.image}" class="form__image--preview">
+                          <button class="form__image--clear-btn" id="content-image-clear" type="button">clear</button>
+                        </label>
                       </div>
                       <label for="content_sort">
                         <input placeholder="${content.sort}" class="form__sort" type="number" value="${content.sort}" min="1" name="content[sort]" id="content_sort">番目に表示</label>
@@ -70,9 +78,13 @@ $(function(){
                       <input type="hidden" name="authenticity_token" value="${csrf_token}">
                       <input placeholder="${content.topic}" class="form__topic" type="text" value="${content.topic}" name="content[topic]" id="content_topic">
                       <textarea placeholder="${content.body}" class="form__body" name="content[body]" id="content_body" cols="115" rows="15">${content.body}</textarea>
-                      <label class="form__image" for="content_image">ファイルを選択
-                        <input class="form__image--hidden" type="file" name="content[image]" id="content_image"></label>
-                      <button class="form__image--clear-btn" type="button">clear</button>
+                      <div id="form__image">
+                        <label class="form__image" for="content_image">
+                          <input class="form__image--hidden" type="file" name="content[image]" id="content_image">
+                          <div class="form__image--preview">ファイルを選択</div>
+                          <button class="form__image--clear-btn" id="content-image-clear" type="button">clear</button>
+                        </label>
+                     </div>
                       <label for="content_sort">
                         <input placeholder="${content.sort}" class="form__sort" type="number" value="${content.sort}" min="1" name="content[sort]" id="content_sort">番目に表示</label>
                       <input type="submit" name="commit" value="UPDATE" class="form__update-btn" data-disable-with="UPDATE">
@@ -88,16 +100,19 @@ $(function(){
     return html;
   }
   function buildNewHTML(content,id,csrf_token){
-    var html = `<div class:"form" id="content_new">
+    var html = `<div class="form" id="content_new">
                   <form enctype="multipart/form-data" action="/pages/${id}/contents" accept-charset="UTF-8" method="post">
                     <input name="utf8" type="hidden" value="✓">
                     <input type="hidden" name="authenticity_token" value=${csrf_token}>
                     <input placeholder="トピックスを入力" class="form__topic" type="text" name="content[topic]" id="content_topic">
                     <textarea placeholder="内容を入力して下さい" class="form__body" name="content[body]" id="content_body" cols="115" rows="15"></textarea>
-                    <label class="form__image" for="content_image">
-                      ファイルを選択
-                      <input placeholder="" class="form__image--hidden" type="file" name="content[image]" id="content_image"></label>
-                    <button class="form__image--clear-btn" type="button">clear</button>
+                    <div id="form__image">
+                      <label class="form__image" for="content_image">
+                        <input class="form__image--hidden" type="file" name="content[image]" id="content_image">
+                        <div class="form__image--preview">ファイルを選択</div>
+                        <button class="form__image--clear-btn" id="content-image-clear" type="button">clear</button>
+                      </label>
+                    </div>
                     <label for="content_sort">
                       <input placeholder="" class="form__sort" type="number" value=${content.sort} min="1" max="${content.sort}" name="content[sort]" id="content_sort">
                       番目に表示</label>
@@ -184,17 +199,33 @@ $(function(){
   })
 
     function buildClearPageImageHTML(){
-      var html = `<div class="form__image" id="form__image">
-                  <label for="content_image">
-                    <input class="form__image--hidden" type="file" name="content[image]" id="content_image">
-                    <div class="form__image--preview">ファイルを選択</div></label>
-                  <button class="form__image--clear-btn" type="button">clear</button>
+      var html = `<div id="form__image">
+                    <label class="form__image" for="page_image">
+                      <input class="form__image--hidden" type="file" name="page[image]" id="page_image">
+                      <div class="form__image--preview">ファイルを選択</div>
+                      <button class="form__image--clear-btn" id="page-image-clear" type="button">clear</button>
+                    </label>
+                  </div>`
+      return html;
+    }
+    function buildClearContentImageHTML(){
+      var html = `<div id="form__image">
+                    <label class="form__image" for="content_image">
+                      <input class="form__image--hidden" type="file" name="content[image]" id="content_image">
+                      <div class="form__image--preview">ファイルを選択</div>
+                      <button class="form__image--clear-btn" id="page-image-clear" type="button">clear</button>
+                    </label>
                   </div>`
       return html;
     }
 
-    $(document).on("click",".form__image--clear-btn",function(){
+    $(document).on("click","#page-image-clear",function(){
       var html = buildClearPageImageHTML();
+      $("#form__image").replaceWith(html);
+    })
+
+    $(document).on("click","#content-image-clear",function(){
+      var html = buildClearContentImageHTML();
       $("#form__image").replaceWith(html);
     })
 

@@ -2,7 +2,14 @@
   = form_with(model: @page, local: true) do |form|
     = form.text_field :title, placeholder: @page.title,class:"form__title"
     = form.text_area :summary, placeholder: @page.summary,class:"form__summary",size:"115x15"
+    #form__image
     = form.label :image,"file",class:"form__image" do
-      ファイルを選択
       = form.file_field :image,class:"form__image--hidden"
+      -if @page.image.present?
+        = image_tag @page.image.url,class:"form__image--preview" 
+      -else
+        .form__image--preview ファイルを選択
+      %button.form__image--clear-btn clear
     = form.submit "UPDATE",class:"form__update-btn"
+    %button.form__cancel-btn 
+      = link_to 'CANCEL',page_path(@page.id)

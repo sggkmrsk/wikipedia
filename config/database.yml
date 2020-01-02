@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: wikipedia_production
-  username: wikipedia
-  password: <%= ENV['WIKIPEDIA_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock

@@ -1,11 +1,11 @@
 .pages{
-    &__page{
+  overflow:scroll;
+  &__page{
     margin:5px;
     display:flex;
     height:40px;
     width:500px;
     justify-content: space-between;
-    overflow:scroll;
     &--title{
       display:inline-block;
       line-height: 50px;
@@ -14,6 +14,9 @@
       font-size: 12px;
       display:inline-block;
       line-height: 50px;
+      &::before{
+        content:'created : '
+      }
     }
   }
 }

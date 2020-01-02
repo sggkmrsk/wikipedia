@@ -1,4 +1,5 @@
 class ContentsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_page
   before_action :move_forward_sort ,only: :destroy
   before_action :move_backward_sort ,only: :create

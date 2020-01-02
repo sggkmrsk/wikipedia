@@ -1,8 +1,8 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_page ,only: [:create,:destroy]
 
   def index
-
   end
 
   def create
@@ -14,6 +14,13 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    comment = @page.comments.find(params[:id])
+    if comment.user_id == current_user.id
+      comment.destroy
+      redirect_to page_path(@page.id)
+    else
+      redirect_to page_path(@page.id)
+    end
   end
 
   private

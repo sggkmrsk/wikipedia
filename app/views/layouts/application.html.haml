@@ -16,6 +16,7 @@
         = form.submit "検索", class: "search-btn"
       %ul.side_bar__menu
         =link_to 'メインページ',root_path, class:"side_bar__menu--list"
+        =link_to 'how to','#', class:"side_bar__menu--list"
         =link_to '記事一覧',pages_path, class:"side_bar__menu--list"
         =link_to '新しいページ',new_page_path, class:"side_bar__menu--list"
         -if user_signed_in?

@@ -159,7 +159,7 @@ $(function(){
       $(".page__top").replaceWith(html)
     })
     .fail(function() {
-      alert("通信エラーです。通信状況を確認して下さい");
+      alert("編集するにはログインが必要です");
     });
   })
 
@@ -181,7 +181,7 @@ $(function(){
       $(content_id).replaceWith(html)
     })
     .fail(function() {
-      alert("通信エラーです。通信状況を確認して下さい");
+      alert("編集するにはログインが必要です");
     });
   })
 
@@ -202,7 +202,7 @@ $(function(){
       $(".page__contents__add-btn").replaceWith(html)
     })
     .fail(function() {
-      alert("通信エラーです。通信状況を確認して下さい");
+      alert("編集するにはログインが必要です");
     });
   })
 

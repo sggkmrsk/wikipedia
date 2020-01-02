@@ -1,6 +1,6 @@
 -if user_signed_in?
   .form
-    .h3 新規ページを作成する
+    %h1 新規ページを作成する
     = form_with(model: @page, local: true ,id: "form__page") do |form|
       = form.text_field :title, placeholder: "ページのタイトルを入力",class:"form__title"
       = form.text_area :summary, placeholder: "要約文を入力して下さい",class:"form__summary",size:"100x15"
@@ -9,9 +9,10 @@
           = form.file_field :image,class:"form__image--hidden"
           .form__image--preview ファイルを選択
           %button.form__image--clear-btn#page-image-clear clear
-      = form.submit "SEND",class:"form__send-btn"
-    %button.form__cancel-btn 
-      = link_to 'CANCEL',root_path
+      .form__btn-area
+        = form.submit "SEND",class:"form__btn-area__send-btn"
+        %button.form__cancel-btn 
+          = link_to 'CANCEL',root_path,class:"form__btn-area__cancel-btn"
 
 -else
   .form_page__need_login

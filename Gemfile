@@ -72,3 +72,7 @@ gem 'haml-rails'
 gem 'pry-rails'
 
 gem 'carrierwave'
+
+group :production do
+  gem 'unicorn', '5.4.1'
+end

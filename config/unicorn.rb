@@ -1,5 +1,9 @@
 #サーバ上でのアプリケーションコードが設置されているディレクトリを変数に入れておく
+<<<<<<< HEAD
 app_path = File.expand_path('../', __FILE__)
+=======
+app_path = File.expand_path('../../../', __FILE__)
+>>>>>>> parent of 72eb9d1... Update unicorn.rb
 
 #アプリケーションサーバの性能を決定する
 worker_processes 1

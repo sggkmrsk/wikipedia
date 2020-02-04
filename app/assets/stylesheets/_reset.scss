@@ -3,10 +3,15 @@
 	TODO with the prefix, should I group by selector or property for weight savings?
 */
 html{
+	margin:0;
+  padding:0;
 	color:#000;
 	background:#FFF;
 	height:100vh;
   width:100vw;
+}
+*{
+	box-sizing: border-box;
 }
 /*
 	TODO remove settings on BODY since we can't namespace it.

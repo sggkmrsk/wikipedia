@@ -1,21 +1,22 @@
 #account-page.account-page
   .account-page__inner.clearfix
-    .account-page__inner--left.account-page__header
+    .account-page__header
       %h2 Log in
       %h5 登録しているユーザーでログイン
-      = render "devise/shared/links"
-    .account-page__inner--right.user-form
+
+    .account-page__form
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-        .field
-          .field-label
+        = devise_error_messages!
+        .account-page__form__field
+          .account-page__form__field--label
             = f.label :email
-          .field-input
-            = f.email_field :email, autofocus: true
-          .field
-            .field-label
-              = f.label :password
-              %i (英数字6文字以上)
-            .field-input
-              = f.password_field :password, autocomplete: "off"
-          .actions
-            = f.submit "Log in", class: 'btn'
+            = f.email_field :email, autofocus: true,class:"account-page__form__field--input"
+          .account-page__form__field--label
+            = f.label :password
+            %i (英数字8文字以上)
+            = f.password_field :password, autocomplete: "off",class:"account-page__form__field--input"
+          .account-page__form__field--label
+            = f.submit "Log in", class: 'account-page__form__field--btn'
+    .sign-up
+      %p 初めての方はこちら
+      = render "devise/shared/links"

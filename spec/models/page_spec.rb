@@ -16,13 +16,18 @@ RSpec.describe Page ,type: :model do
         page.title = ""
         expect(page).to be_invalid
       end
-      it "is invalid without a title" do
+      it "is invalid without a summary" do
         page.summary = ""
         expect(page).to be_invalid
       end
-      it "is invalid without a title" do
+      it "is invalid without a user_id" do
         page.user_id = ""
         expect(page).to be_invalid
+      end
+      it "is invalid with a duplicate title" do
+        page = create(:page)
+        another_page = build(:page)
+        expect(another_page).to be_invalid
       end
     end
   end

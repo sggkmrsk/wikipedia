@@ -1,5 +1,6 @@
 class Page < ApplicationRecord
   validates :title, presence: true ,uniqueness: true
+  validates :summary, presence: true
   belongs_to :user
   has_many :contents
   has_many :comments

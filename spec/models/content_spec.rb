@@ -18,19 +18,19 @@ RSpec.describe Content ,type: :model do
     context 'can not save' do
       it "is invalid without a topic" do
         content.topic = ""
-        expect(content).to be_invalid
+        expect(content.errors[:topic]).to include("can't be blank") if content.valid?
       end
       it "is invalid without a user_id" do
         content.user_id = ""
-        expect(content).to be_invalid
+        expect(content.errors[:user_id]).to include("can't be blank") if content.valid?
       end
       it "is invalid without a page_id" do
         content.page_id = ""
-        expect(content).to be_invalid
+        expect(content.errors[:page_id]).to include("can't be blank") if content.valid?
       end
       it "is invalid without a sort" do
         content.sort = ""
-        expect(content).to be_invalid
+        expect(content.errors[:sort]).to include("can't be blank") if content.valid?
       end
     end
   end

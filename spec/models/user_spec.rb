@@ -2,8 +2,10 @@ require 'rails_helper'
 RSpec.describe User ,type: :model do
   describe '#create' do
     let(:user) {build_stubbed(:user)}
-    it "is valid with a name, email, password, password_confirmation" do
-      expect(user).to be_valid
+    context 'can save' do
+      it "is valid with a name, email, password, password_confirmation" do
+        expect(user).to be_valid
+      end
     end
     it "is invalid without a name" do
       user.name = ""

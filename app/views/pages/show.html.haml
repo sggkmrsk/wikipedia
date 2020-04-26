@@ -17,7 +17,7 @@
         .page__contents__content--body
           = simple_format(content.body)
         .page__image
-        = image_tag content.image.url, class: 'page__contents__content--image' if content.image.present?
+          = image_tag content.image.url, class: 'page__contents__content--image' if content.image.present?
         .page__contents__content--user
           最終更新 ：
           = content.user.name
